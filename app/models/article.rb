@@ -5,6 +5,6 @@ class Article < ApplicationRecord
   before_save :create_slug_for_article
 
   def create_slug_for_article
-    self.slug = title.gsub(" ", "-")
+    self.slug = title.gsub(' ', '-')
   end
 end
