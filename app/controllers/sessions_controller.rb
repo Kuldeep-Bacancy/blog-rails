@@ -14,7 +14,7 @@ class SessionsController < BaseController
   def logout
     token = request.headers['Authorization']&.split(' ')&.last
     if token.present?
-      BlackListToken.find_or_create_by(user_id: @current_user.id, token:)
+      BlackListToken.find_or_create_by(user_id: current_user.id, token:)
       render_json('Logout Successfully!')
     else
       render_401
