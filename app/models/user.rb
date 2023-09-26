@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
 
   has_many :black_list_tokens, dependent: :destroy
+  has_many :articles, dependent: :destroy
 end
