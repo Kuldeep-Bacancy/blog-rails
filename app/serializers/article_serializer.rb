@@ -1,6 +1,6 @@
 class ArticleSerializer
   include JSONAPI::Serializer
-  attributes :title, :content, :slug
+  attributes :title, :content, :slug, :user_id
 
 
   attribute :image do |record|
