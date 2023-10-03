@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  has_many_attached :images
+  has_one_attached :image
   belongs_to :user
 
   before_save :create_slug_for_article
