@@ -1,6 +1,5 @@
 class BaseController < ApplicationController
   include JsonWebToken
-  include ApplicationErrors
 
   before_action :authenticate_request
 
