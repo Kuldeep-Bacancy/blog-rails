@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: blog_backend_production
-  username: blog_backend
-  password: <%= ENV["BLOG_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= Rails.application.credentials.production_database_url %>
