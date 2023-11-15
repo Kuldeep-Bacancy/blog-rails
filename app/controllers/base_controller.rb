@@ -6,17 +6,19 @@ class BaseController < ApplicationController
   def authenticate_request
     token = request.headers['Authorization']&.split(' ')&.last
     begin
-      if token.present?
-        return render_401 if BlackListToken.find_by(token:)
+      return render_401 unless token.present?
 
-        decoded = jwt_decode(token)
-        @current_user_id = decoded[:user_id]
-      else
-        render_401
-      end
+      current_user_token(token)
     rescue (JWT::ExpiredSignature || JWT::DecodeError) => e
       render_401
     end
+  end
+
+  def current_user_token(token)
+    return render_401 if BlackListToken.find_by(token:)
+
+    decoded = jwt_decode(token)
+    @current_user_id = decoded[:user_id]
   end
 
   def current_user
