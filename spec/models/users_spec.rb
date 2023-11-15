@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:black_list_tokens).dependent(:destroy) }
@@ -14,7 +13,7 @@ RSpec.describe User, type: :model do
 
     context 'email validation' do
       let(:user) { build_stubbed(:user, email: 'test@gmail.com') }
-      let(:user_with_incorrect_email) { build_stubbed(:user, email: 'test.com')}
+      let(:user_with_incorrect_email) { build_stubbed(:user, email: 'test.com') }
 
       it 'should not save email with existing email' do
         User.create(email: 'test@gmail.com', password: 'Test@1234')

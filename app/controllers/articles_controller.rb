@@ -5,12 +5,12 @@ class ArticlesController < BaseController
   def index
     @articles = Article.all
 
-    render_json('Articles fetched Successfully!', ArticleSerializer.new(@articles).serializable_hash[:data])
+    render_with_message('Articles fetched Successfully!', @articles)
   end
 
   # GET /articles/1
   def show
-    render_json('Article fetched Successfully!', ArticleSerializer.new(@article).serializable_hash[:data])
+    render_with_message('Article fetched Successfully!', @article)
   end
 
   # POST /articles
@@ -18,7 +18,7 @@ class ArticlesController < BaseController
     @article = Article.new(article_params.merge({ user_id: current_user.id }))
 
     if @article.save
-      render_json('Article Saved Successfully!', ArticleSerializer.new(@article).serializable_hash[:data])
+      render_with_message('Article Saved Successfully!', @article)
     else
       render_422(@article.errors.full_messages)
     end
@@ -27,7 +27,7 @@ class ArticlesController < BaseController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      render_json('Article Updated Successfully!', ArticleSerializer.new(@article).serializable_hash[:data])
+      render_with_message('Article Updated Successfully!', @article)
     else
       render_422(@article.errors.full_messages)
     end
@@ -50,5 +50,9 @@ class ArticlesController < BaseController
   # Only allow a list of trusted parameters through.
   def article_params
     params.require(:article).permit(:title, :slug, :content, :user_id, :image)
+  end
+
+  def render_with_message(msg, object)
+    render_json(msg, ArticleSerializer.new(object).serializable_hash[:data])
   end
 end
