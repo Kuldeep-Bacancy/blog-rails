@@ -84,6 +84,9 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.0.1)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     cloudinary (1.28.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -245,6 +248,8 @@ GEM
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    ruby_audit (2.2.0)
+      bundler-audit (~> 0.9.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     stringio (3.0.9)
@@ -266,6 +271,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
+  bundler-audit
   cloudinary
   debug
   factory_bot_rails
@@ -278,6 +284,7 @@ DEPENDENCIES
   rails (~> 7.1)
   rspec-rails
   rubocop
+  ruby_audit
   shoulda-matchers
   tzinfo-data
 
