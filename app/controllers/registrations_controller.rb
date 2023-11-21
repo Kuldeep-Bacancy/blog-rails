@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegistrationsController < BaseController
   skip_before_action :authenticate_request, only: [:signup]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < BaseController
   skip_before_action :authenticate_request, only: [:login]
 

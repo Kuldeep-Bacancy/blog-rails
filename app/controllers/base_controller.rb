@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseController < ApplicationController
   include JsonWebToken
 
@@ -9,7 +11,7 @@ class BaseController < ApplicationController
       return render_401 unless token.present?
 
       current_user_token(token)
-    rescue (JWT::ExpiredSignature || JWT::DecodeError) => e
+    rescue (JWT::ExpiredSignature || JWT::DecodeError)
       render_401
     end
   end
