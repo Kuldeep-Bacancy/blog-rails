@@ -51,8 +51,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
-  gem 'ruby_audit'
   gem 'shoulda-matchers'
+  gem 'bundler-audit'
+  gem 'ruby_audit'
 end
 
 group :development do
