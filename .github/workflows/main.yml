@@ -29,7 +29,7 @@ jobs:
       # Setup credentials
       - name: Set up credentials
         run: |
-          cp config/credentials.yml.enc
+          cp config/credentials.yml.enc config/credentials.yml.enc
           EDITOR="cat" rails credentials:edit
       # Add or replace test runners here
       - name: Run tests
